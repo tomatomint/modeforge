@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ModeForge — Documentation</title>
+<style>
+  body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; line-height: 1.65; color: #1a1a1a; }
+  h1 { font-size: 1.6rem; } h2 { font-size: 1.2rem; margin-top: 2rem; }
+  ol, ul { padding-left: 1.4rem; }
+  footer { margin-top: 3rem; font-size: .9rem; color: #555; }
+</style>
+</head>
+<body>
+<h1>ModeForge — Documentation</h1>
+<p>ModeForge adds a Dark mode to your existing Webflow variable collection. It generates Dark values from the color variables you already use, checks text/background contrast, and applies everything at once — after you download a backup.</p>
+
+<h2>Requirements</h2>
+<ul>
+  <li>A Webflow site with at least one variable collection that contains color variables.</li>
+  <li>Designer access to edit that site.</li>
+</ul>
+
+<h2>Installation</h2>
+<ol>
+  <li>Install ModeForge from the Webflow Marketplace into your workspace.</li>
+  <li>Open your site in the Webflow Designer.</li>
+  <li>Open ModeForge from the Apps panel. The app runs entirely inside the Designer — there is no server and no separate account to create.</li>
+</ol>
+
+<h2>How to use</h2>
+<ol>
+  <li><strong>Select</strong> — Pick a variable collection. ModeForge lists your color variables with their current swatches. Non-color variables are counted and left alone. If a Dark mode already exists, ModeForge updates it instead of creating a duplicate.</li>
+  <li><strong>Generate</strong> — Choose a preset (Standard, Darker, or Lighter). Nothing is written to your site at this point.</li>
+  <li><strong>Preview</strong> — A side-by-side table shows every variable's Light value next to its generated Dark value. Click any cell to fine-tune a single value by hand.</li>
+  <li><strong>Apply</strong> — ModeForge first prompts you to download a backup JSON of your original values, then creates the Dark mode and sets all values at once, and reports how many succeeded.</li>
+</ol>
+
+<h2>Contrast checking</h2>
+<p>ModeForge estimates background/text pairs from your variable names and computes their WCAG contrast ratio. If a pair falls below 4.5:1, it raises the text lightness step by step and recalculates, and flags the pair in the preview instead of silently changing your hue. Colors it cannot classify still get the standard conversion and are marked "role unknown" in the preview.</p>
+
+<h2>Backup and safety</h2>
+<ul>
+  <li>Nothing is written until you press Apply, and the backup download comes first. Webflow's Designer API has no undo for variable writes, so the backup JSON is your safety net — keep it until you have checked the result.</li>
+  <li>To roll back, re-import your original values from the backup JSON by editing the variables, or delete the generated Dark mode.</li>
+  <li>No data leaves your site: the app runs entirely on the Designer API inside the Designer.</li>
+</ul>
+
+<h2>Limitations (v1)</h2>
+<ul>
+  <li>One collection at a time (no multi-collection batch).</li>
+  <li>Color variables only — size, number, and font variables are out of scope.</li>
+  <li>No visitor-facing toggle code is embedded automatically; after applying, use Webflow's variable-mode switching for your site and follow the guidance shown in the app.</li>
+</ul>
+
+<h2>Support</h2>
+<p>Developer page: <a href="https://note.com/novel_mint2747">note.com/novel_mint2747</a>. See also the <a href="privacy.html">Privacy Policy</a> and <a href="terms.html">Terms of Service</a>.</p>
+
+<footer>ModeForge documentation — last updated November 12, 2026.</footer>
+</body>
+</html>
